@@ -45,44 +45,104 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
 
+## Procedure
+
+ 1.Create a new project in QuartusII software.
+
+2.Name the project as uc for upcounter and dc for down counter.
+
+3.Create a new verilog hdl file in the project file.
+
+4.Name the module as dc and uc for down counter and up counter.
+
+5.Within the module declare input and output variables.
+
+6.Create a loop using if-else with condition parameter as reset value.
+
+7.End the loop.
+
+8.End the module.
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+## Developed by: Lakshman
 
+## RegisterNumber: 212222240001 
 
+### Up Counter
+module uc(clk,A);
 
+input clk;
 
+output reg [3:0]A;
 
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+always @(posedge clk)
 
+begin
 
+A[3]=(((A[2]) & (A[1]) & (A[0]))^A[3]);
 
+A[2]=(((A[1]) & (A[0]))^A[2]);
 
+A[1]=((A[0])^A[1]);
 
+A[0]=1^A[0];
 
+end
 
+endmodule
 
+### Down Counter
+module dc(clk,A);
 
-### TIMING DIGRAMS FOR COUNTER  
+input clk;
 
+output reg [3:0]A;
 
+always @(posedge clk)
 
+begin
 
+A[3]=(((~A[2]) & (~A[1]) & (~A[0]))^A[3]);
 
-### TRUTH TABLE 
+A[2]=(((~A[1]) & (~A[0]))^A[2]);
 
+A[1]=((~A[0])^A[1]);
 
+A[0]=1^A[0];
 
+end
 
+endmodule
 
+### RTL LOGIC UP COUNTER AND DOWN COUNTER
+
+## Up Counter
+![OUTPUT](/DE_6.1.png)
+
+## Down Counter
+![OUTPUT](/DE_6.2.png)
+
+### TIMING DIGRAMS FOR COUNTER
+
+## Up Counter
+![OUTPUT](/DE_6.3.png)
+
+### Down Counter
+![OUTPUT](/DE_6.4.png)
+
+## TRUTH TABLE
+
+## Up Counter
+![OUTPUT](/DE_6.5.jpg)
+
+## Down Counter
+![OUTPUT](/DE_6.6.jpg)
 
 ### RESULTS 
+
+The 4 bit up and down counters has been implemented and validated the functionality.
